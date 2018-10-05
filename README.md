@@ -1,1 +1,1 @@
-# Ceph-addons
+# Дополнительное ПО для SDS Ceph
