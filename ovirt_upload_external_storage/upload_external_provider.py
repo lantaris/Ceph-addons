@@ -137,7 +137,7 @@ try:
     ERASE_LINE = '\x1b[2K'
     # Upload img to created rbd
     print("Uploading image...")
-    process = subprocess.Popen(["qemu-img", "convert", "-p", "-f", image_info["format"], "-O", "raw", "-n", image_path,
+    process = subprocess.Popen(["qemu-img", "convert", "-p", "-m", "16", "-W", "-f", image_info["format"], "-O", "raw", "-n", image_path,
                                 "rbd:{}/{}:id={}:conf={}".format(args.rbdpool, "volume-" + disk.id, args.cephuser,
                                                                  args.cephconf)],
                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
