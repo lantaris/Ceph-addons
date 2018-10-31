@@ -67,8 +67,8 @@ out = subprocess.check_output(
 image_info = json.loads(out)
 
 # Minimcal size rbd image 1Gb. Bytes
-if image_info["virtual-size"] < 2 ** 30:
-    image_info["virtual-size"] = 2 ** 30
+gb_byte = 2 ** 30
+image_info["virtual-size"] = (int(image_info["virtual-size"] / gb_byte) + 1) * gb_byte    # rounding 1gb
 
 # This code will connect to the server and create a new
 # disk on external provider, e.g. cinder, one that isn't attached to any virtual machine.
